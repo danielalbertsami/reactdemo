@@ -6,21 +6,23 @@ html, body {
 .App {
   font-family: 'Roboto', sans-serif;
   box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
 }
 
 .ToDo {
-  width: fit-content;
-  border: 1px solid black;
-  padding-left: 10px;
-  padding-right: 10px;
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
 }
 
 .ToDoContainer {
+  margin-left: 10px;
+  margin-right: 10px;
+  grid-column: 1/10;
   border: 1px solid black;
   display: flex;
   flex-direction: column;
-  min-height: 300px;
-  max-height: 300px;
+  max-height: 80vh;
   overflow: auto;
 }
 
@@ -55,18 +57,15 @@ html, body {
 .ToDoRow {
   margin-top: 5px;
   margin-bottom: 5px;
+  flex-wrap: wrap;
 }
 
 .ToDoItem {
-  
+  max-width: initial;
 }
 
 .EntryBar {
   margin-top: auto;
-}
-
-.EntryBar > form {
-  width: 100%;
 }
 
 .Input {
