@@ -18,11 +18,13 @@ class EntryBar extends Component {
       <div className="EntryBar">
         <form>
           <input
+            className="Input"
             type="text"
             placeholder="Add an item to do..."
             value={this.props.newItem}
-            onChange={this.props.handleNewItem}
-            onKeyPress={this.props.handleNewItem}
+            onChange={this.props.newItemHandler}
+            onKeyPress={this.props.newItemHandler}
+            maxLength="50"
           />
           <div className="AddButton">
             <button type="button"
@@ -56,20 +58,20 @@ class ToDoContainer extends Component {
     super(props);
     this.state = {
       items: [
-        { value: "See mom" },
-        { value: "Go get food" }
+        { value: "Example Item 1" },
+        { value: "Example Item 2" }
       ],
       newItem: ""
     };
 
     this.addHandler = this.addHandler.bind(this);
     this.delHandler = this.delHandler.bind(this);
-    this.handleNewItem = this.handleNewItem.bind(this);
+    this.newItemHandler = this.newItemHandler.bind(this);
   }
 
   addHandler() {
     const newItemsArr = this.state.items;
-    newItemsArr.push({value: this.state.newItem});
+    newItemsArr.push({ value: this.state.newItem });
     this.setState({
       newItemsArr, newItem: ""
     });
@@ -83,12 +85,25 @@ class ToDoContainer extends Component {
     });
   }
 
-  handleNewItem(e) {
-    if(e.key === 'Enter') {
+  newItemHandler(e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
       this.addHandler();
       return;
     }
     this.setState({ newItem: e.target.value });
+  }
+
+  componentDidMount() {
+    this.scrollToBottom();
+  }
+
+  componentDidUpdate() {
+    this.scrollToBottom();
+  }
+
+  scrollToBottom = () => {
+    this.containerEnd.scrollIntoView({ behavior: "smooth" });
   }
 
   render() {
@@ -104,24 +119,17 @@ class ToDoContainer extends Component {
       );
     });
     return (
-      <div className="ToDoContainer">
-        <table>
-          <thead>
-            <tr><th>
-              <ToDoHeader />
-            </th></tr>
-          </thead>
-          <tbody>
-            <tr><td>
-              {rows}
-              <EntryBar
-                addHandler={this.addHandler}
-                items={this.state.items}
-                newItem={this.state.newItem}
-                handleNewItem={this.handleNewItem} />
-            </td></tr>
-          </tbody>
-        </table>
+      <div className="ToDo">
+        <ToDoHeader />
+        <div className="ToDoContainer">
+          {rows}
+          <div ref={(el) => { this.containerEnd = el; }}></div>
+        </div>
+        <EntryBar
+          addHandler={this.addHandler}
+          items={this.state.items}
+          newItem={this.state.newItem}
+          newItemHandler={this.newItemHandler} />
       </div>
     );
   }

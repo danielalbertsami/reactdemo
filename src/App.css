@@ -1,8 +1,60 @@
-.ToDoContainer {
-  border: 1px solid black;
+.ToDo {
+  position: absolute;
+  margin: auto;
+  width: fit-content;
+  height: 300px;
+  top: 100px;
+  bottom: auto;
+  left: 0;
+  right: 0;
 }
 
-.AddButton, .DeleteButton {
-  display: inline-block;
-  padding-left: 5px;
+.ToDoContainer {
+  border: 1px solid black;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+  max-height: 300px;
+  overflow:auto;
+}
+
+.ToDoHeader {
+  margin-top: 5px;
+  align-self: center;
+  text-align: center;
+}
+
+.ToDoRow, .EntryBar, .EntryBar > form {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.ToDoRow, .EntryBar {
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 5px;
+  min-height: initial;
+  flex: 0 0 auto;
+}
+
+.ToDoRow {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.EntryBar {
+  margin-top: auto;
+}
+
+.EntryBar > form {
+  width: 100%;
+}
+
+.Input {
+  width: fit-content;
+}
+
+.AddButton, .DelButton {
 }
