@@ -5,7 +5,7 @@ class ToDoHeader extends Component {
   render() {
     return (
       <div className="ToDoHeader">
-        To Do List
+        To Do
       </div>
     );
   }
@@ -42,7 +42,9 @@ class ToDoRow extends Component {
     const value = this.props.value;
     return (
       <div className="ToDoRow">
-        {value}
+        <div className="ToDoItem">
+          {value}
+        </div>
         <div className="DeleteButton">
           <button type="button"
             onClick={() =>
@@ -70,11 +72,14 @@ class ToDoContainer extends Component {
   }
 
   addHandler() {
+    if (this.state.newItem.length === 0 || !this.state.newItem.trim()) {
+      return;
+    }
     const newItemsArr = this.state.items;
     newItemsArr.push({ value: this.state.newItem });
     this.setState({
       newItemsArr, newItem: ""
-    });
+    }, this.scrollToBottom);
   }
 
   delHandler(index) {
@@ -94,16 +99,8 @@ class ToDoContainer extends Component {
     this.setState({ newItem: e.target.value });
   }
 
-  componentDidMount() {
-    this.scrollToBottom();
-  }
-
-  componentDidUpdate() {
-    this.scrollToBottom();
-  }
-
   scrollToBottom = () => {
-    this.containerEnd.scrollIntoView({ behavior: "smooth" });
+    this.containerEnd.scrollIntoView();
   }
 
   render() {
@@ -120,6 +117,7 @@ class ToDoContainer extends Component {
     });
     return (
       <div className="ToDo">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
         <ToDoHeader />
         <div className="ToDoContainer">
           {rows}
@@ -139,7 +137,9 @@ class App extends Component {
 
   render() {
     return (
-      <ToDoContainer />
+      <div className="App">
+        <ToDoContainer />
+      </div>
     );
   }
 }
