@@ -23,11 +23,11 @@ class EntryBar extends Component {
             value={this.props.newItem}
             onChange={this.props.newItemHandler}
             onKeyPress={this.props.newItemHandler}
-            maxLength="50"
+            maxLength="150"
           />
           <div className="AddButton">
             <button type="button"
-              onClick={this.props.addHandler}>Add</button>
+              onClick={this.props.addHandler}>+</button>
           </div>
         </form>
     );
@@ -77,7 +77,7 @@ class ToDoContainer extends Component {
     newItemsArr.unshift({ value: this.state.newItem });
     this.setState({
       newItemsArr, newItem: ""
-    }, this.scrollToBottom);
+    });
   }
 
   delHandler(index) {
@@ -95,10 +95,6 @@ class ToDoContainer extends Component {
       return;
     }
     this.setState({ newItem: e.target.value });
-  }
-
-  scrollToBottom = () => {
-    this.containerEnd.scrollIntoView();
   }
 
   render() {
