@@ -74,7 +74,7 @@ class ToDoContainer extends Component {
       return;
     }
     const newItemsArr = this.state.items;
-    newItemsArr.push({ value: this.state.newItem });
+    newItemsArr.unshift({ value: this.state.newItem });
     this.setState({
       newItemsArr, newItem: ""
     }, this.scrollToBottom);
@@ -117,12 +117,12 @@ class ToDoContainer extends Component {
       <div className="ToDo">
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
         <ToDoHeader />
-        <div className="ToDoContainer">
-          <EntryBar
+        <EntryBar
             addHandler={this.addHandler}
             items={this.state.items}
             newItem={this.state.newItem}
             newItemHandler={this.newItemHandler} />
+        <div className="ToDoContainer">
           {rows}
           <div ref={(el) => { this.containerEnd = el; }}></div>
         </div>
