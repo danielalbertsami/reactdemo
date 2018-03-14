@@ -39,7 +39,8 @@ class ToDoRow extends Component {
   render() {
     const value = this.props.value;
     return (
-      <div className="ToDoRow">
+      <div className="ToDoRow"
+      style = {this.props.style}>
         <div className="DeleteButton">
           <button type="button"
             onClick={() =>
@@ -100,13 +101,20 @@ class ToDoContainer extends Component {
   render() {
     const rows = [];
     this.state.items.forEach((item) => {
+      let style;
+      if (this.state.items.indexOf(item) % 2) {
+        style = {backgroundColor : '#ddd'};
+      } else { 
+        style = {backgroundColor : '#fff'};
+      }
       rows.push(
         <ToDoRow
           value={item.value}
           key={this.state.items.indexOf(item)}
           delHandler={this.delHandler}
           items={this.state.items}
-          index={this.state.items.indexOf(item)} />
+          index={this.state.items.indexOf(item)}
+          style={style} />
       );
     });
     return (

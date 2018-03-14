@@ -61,11 +61,8 @@ html, body {
 .ToDoRow {
   display: grid;
   grid-template-columns: 2em auto;
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
-  margin-left: 1em;
-  margin-right: 1em;
-  align-self: flex-start;
+  border-bottom: 1px solid black;
+  padding: 1em 0 1em 0;
 }
 
 .ToDoItem {
@@ -76,6 +73,9 @@ html, body {
 
 .DeleteButton {
   grid-column: 1 / span 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .Input {
