@@ -16,7 +16,8 @@ class EntryBar extends Component {
   render() {
     return (
       <form className="EntryBar">
-          <input
+          <textarea
+            rows="2"
             className="Input"
             type="text"
             placeholder="Add an item to do..."
