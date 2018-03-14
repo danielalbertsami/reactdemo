@@ -37,7 +37,7 @@ html, body {
 }
 
 .ToDoHeader {
-  background-color: #000;
+  background-color: #5555ff;
   color: #eee;
   display: flex;
   align-items: center;
@@ -94,4 +94,6 @@ html, body {
 
 .DeleteButton > button {
   width: 2em;
+  background-color: #ddffdd;
+  border-radius: 5px;
 }

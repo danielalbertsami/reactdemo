@@ -103,10 +103,14 @@ class ToDoContainer extends Component {
     const rows = [];
     this.state.items.forEach((item) => {
       let style;
-      if (this.state.items.indexOf(item) % 2) {
-        style = {backgroundColor : '#ddd'};
+      if (this.state.items.length % 2) {
+        style = (this.state.items.indexOf(item) % 2) ?
+          {backgroundColor : '#ddddff'} : 
+          {backgroundColor: '#ffffff'};
       } else { 
-        style = {backgroundColor : '#fff'};
+        style = (this.state.items.indexOf(item) % 2) ?
+          {backgroundColor : '#ffffff'} : 
+          {backgroundColor: '#ddddff'};
       }
       rows.push(
         <ToDoRow
