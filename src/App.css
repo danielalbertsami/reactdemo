@@ -5,24 +5,20 @@ html, body {
 
 .App {
   font-family: 'Roboto', sans-serif;
-  box-sizing: border-box;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
 }
 
 .ToDo {
-  grid-column: 1 / -1;
-  grid-row: 1 / -1;
+  height: 100vh;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 2em auto;
 }
 
 .ToDoContainer {
-  margin-left: 10px;
-  margin-right: 10px;
-  grid-column: 1/10;
-  border: 1px solid black;
+  grid-column: 1 / -1;
   display: flex;
   flex-direction: column;
-  max-height: 80vh;
   overflow: auto;
 }
 
@@ -38,12 +34,12 @@ html, body {
   margin-top: 5px;
   align-self: center;
   text-align: center;
+  grid-column: 1 / -1;
 }
 
-.ToDoRow, .EntryBar, .EntryBar > form {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
+.EntryBar {
+  display: grid;
+  grid-template-columns: auto auto;
 }
 
 .ToDoRow, .EntryBar {
@@ -55,22 +51,29 @@ html, body {
 }
 
 .ToDoRow {
+  display: grid;
+  grid-template-columns: 2em auto;
   margin-top: 5px;
   margin-bottom: 5px;
-  flex-wrap: wrap;
+  align-self: flex-start;
 }
 
 .ToDoItem {
-  max-width: initial;
+  grid-column: 2 / span 1 ;
+  overflow: hidden;
+  overflow-wrap: break-word;
 }
 
-.EntryBar {
-  margin-top: auto;
+.DeleteButton {
+  grid-column: 1 / span 1;
 }
 
 .Input {
-  width: fit-content;
+  grid-column: 1 / span 1;
+  justify-self: start;
 }
 
-.AddButton, .DelButton {
+.AddButton {
+  grid-column: 2 / span 1;
+  justify-self: start;
 }

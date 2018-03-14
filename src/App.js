@@ -15,8 +15,7 @@ class EntryBar extends Component {
 
   render() {
     return (
-      <div className="EntryBar">
-        <form>
+      <form className="EntryBar">
           <input
             className="Input"
             type="text"
@@ -31,7 +30,6 @@ class EntryBar extends Component {
               onClick={this.props.addHandler}>Add</button>
           </div>
         </form>
-      </div>
     );
   }
 }
@@ -42,13 +40,13 @@ class ToDoRow extends Component {
     const value = this.props.value;
     return (
       <div className="ToDoRow">
-        <div className="ToDoItem">
-          {value}
-        </div>
         <div className="DeleteButton">
           <button type="button"
             onClick={() =>
-              this.props.delHandler(this.props.index)}>X</button>
+              this.props.delHandler(this.props.index)}>✓</button>
+        </div>
+        <div className="ToDoItem">
+          {value}
         </div>
       </div>
     );
@@ -120,14 +118,14 @@ class ToDoContainer extends Component {
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
         <ToDoHeader />
         <div className="ToDoContainer">
+          <EntryBar
+            addHandler={this.addHandler}
+            items={this.state.items}
+            newItem={this.state.newItem}
+            newItemHandler={this.newItemHandler} />
           {rows}
           <div ref={(el) => { this.containerEnd = el; }}></div>
         </div>
-        <EntryBar
-          addHandler={this.addHandler}
-          items={this.state.items}
-          newItem={this.state.newItem}
-          newItemHandler={this.newItemHandler} />
       </div>
     );
   }
