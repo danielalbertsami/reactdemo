@@ -17,6 +17,7 @@ class EntryBar extends Component {
     return (
       <form className="EntryBar">
           <textarea
+            style={{resize: "none"}}
             rows="2"
             className="Input"
             type="text"
